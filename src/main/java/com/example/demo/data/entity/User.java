@@ -1,9 +1,14 @@
 package com.example.demo.data.entity;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 
@@ -21,4 +26,8 @@ public class User {
 
 	// userテーブルのemail
 	private String email;
+	
+	@CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createTime;
 }
