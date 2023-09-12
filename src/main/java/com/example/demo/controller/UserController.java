@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.data.entity.User;
 import com.example.demo.data.form.UserForm;
@@ -36,5 +37,18 @@ public class UserController {
 		model.addAttribute("userForm", userForm);
 		// テンプレートは src/main/resources/templates/newuser.html とします。
 		return "newuser";
+	}
+	
+	// マッピング設定
+	@PostMapping("/newuser")
+	public String registerUser(UserForm userForm) {
+		User user = new User();
+		user.setName(userForm.getName());
+		user.setEmail(userForm.getEmail());
+
+		// データベースに保存
+		userRepository.save(user);
+		// ユーザ一覧画面へリダイレクト
+		return "redirect:/users";
 	}
 }
