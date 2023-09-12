@@ -16,7 +16,7 @@
 				<td th:text="${user.id}"></td><!-- 表示したいタグにth:textを追加 -->
 				<td th:text="${user.name}"></td><!-- 表示したいタグにth:textを追加 -->
 				<td th:text="${user.email}"></td><!-- 表示したいタグにth:textを追加 -->
-				<td th:text="${user.createTime}"></td>
+				<td th:text="${user.getFormattedCreateTime()}"></td>
 			</tr>
 		</table>
 	</body>
