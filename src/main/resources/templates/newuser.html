@@ -13,6 +13,8 @@
 					<td>
 						<!-- userFromのnameフィールドとの紐付け -->
 						<input type="text" id="name" name="name" value="">
+						<!-- バリデーションエラーメッセージ表示 -->
+						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 					</td>
 				</tr>
 				<tr>
@@ -20,6 +22,8 @@
 					<td>
 						<!-- userFromのemailフィールドとの紐付け -->
 						<input type="text" id="email" name="email" value="">
+						<!-- バリデーションエラーメッセージ表示 -->
+						<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 					</td>
 				</tr>
 			</table>
