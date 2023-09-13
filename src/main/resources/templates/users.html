@@ -19,5 +19,8 @@
 				<td th:text="${user.getFormattedCreateTime()}"></td>
 			</tr>
 		</table>
+		
+		<!-- ユーザー登録画面へのリンク追加 -->
+		<a th:href="@{/newuser}">新規登録へ</a>
 	</body>
 </html>
