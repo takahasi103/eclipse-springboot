@@ -74,9 +74,14 @@ public class UserController {
 	@PostMapping("/users/{id}")
 	public String getUser(@PathVariable Long id, Model model) {
 		java.util.Optional<User> userOptional = userRepository.findById(id);
+		
+		if (!userOptional.isPresent()) {
+	        // ユーザーが存在しない場合のエラーハンドリングを行う
+	        return "errorPage"; // エラーページのテンプレート名を指定
+	    }
 
 	    User user = userOptional.get();
 	    model.addAttribute("user", user);
-		return "redirect:/user";
+		return "redirect:/userprofile";
 	}
 }
