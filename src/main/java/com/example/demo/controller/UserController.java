@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.data.entity.User;
@@ -57,6 +58,16 @@ public class UserController {
 		// データベースに保存
 		userRepository.save(user);
 		// ユーザ一覧画面へリダイレクト
+		return "redirect:/users";
+	}
+	
+	// deleteUserメソッドを追加
+	// リクエストマッピング設定を追加
+	@PostMapping("/users/delete/{id}")
+	// 処理の中でidを使えるように、引数にidを追加
+	public String deleteUser(@PathVariable Long id) {
+		// 指定したIDのユーザーを削除
+		userRepository.deleteById(id);
 		return "redirect:/users";
 	}
 }
