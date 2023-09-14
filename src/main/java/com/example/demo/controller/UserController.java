@@ -70,4 +70,13 @@ public class UserController {
 		userRepository.deleteById(id);
 		return "redirect:/users";
 	}
+	
+	@PostMapping("/users/{id}")
+	public String getUser(@PathVariable Long id, Model model) {
+		java.util.Optional<User> userOptional = userRepository.findById(id);
+
+	    User user = userOptional.get();
+	    model.addAttribute("user", user);
+		return "redirect:/user";
+	}
 }
